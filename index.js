@@ -1,4 +1,6 @@
 const root = document.getElementById('root');
+const destinationInput = document.getElementById('destinationInput');
+const destinationBtn = document.getElementById('destinationBtn');
 
 class Tile {
     constructor(x, y) {
@@ -13,7 +15,7 @@ class Chessboard {
     constructor(start) {
         this.board = [];
         this.start = start;
-        this.end = [2, 4];
+        this.end = [4, 4];
     }
 
     reset(start) {
@@ -193,7 +195,25 @@ class Chessboard {
     }
 }
 
-const board = new Chessboard([7,2]);
+const board = new Chessboard([1,0]);
 board.buildBoard();
 board.drawBoard();
 board.breadthFirst();
+
+destinationBtn.addEventListener('click', function() {
+    try {
+        let newCoords;
+        if (destinationInput.value.includes(", ")) {
+            newCoords = destinationInput.value.split(", ");
+        } else {
+            newCoords = destinationInput.value.split(",");
+        }
+        const x = Number(newCoords[0]);
+        const y = Number(newCoords[1]);
+        board.end = [x,y];
+        board.reset([board.start.id[0], board.start.id[1]])
+        
+    } catch {
+        alert("Please enter destination in following format: X,Y or X, Y");
+    }
+})
