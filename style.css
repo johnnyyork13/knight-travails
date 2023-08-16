@@ -9,6 +9,7 @@ body {
     align-items: center;
     flex-direction: column;
     padding-top: 50px;
+    position: absolute;
 }
 
 h1 {
@@ -117,4 +118,11 @@ h3 {
     background-color: rgb(95,95,95);
     color: white;
     cursor: pointer;
+}
+
+footer {
+    position:fixed;
+    bottom: 0;
+    height: 30px;
+    font-size: 1.2em;   
 }
